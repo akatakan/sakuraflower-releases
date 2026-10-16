@@ -4,7 +4,7 @@ League of Legends için skin yöneticisi. Bu depo yalnız sürümleri barındır
 
 ## Kurulum
 
-[Son sürümün](../../releases/latest) `SakuraFlower_x.y.z_x64-setup.exe` dosyasını indirip çalıştırın. Bundan sonraki sürümler uygulamanın içinden gelir: yeni sürüm çıkınca uygulama güncellemeyi ister ve yalnız değişen parçaları indirir.
+**[SakuraFlower-setup.exe](https://github.com/akatakan/sakuraflower-releases/releases/latest/download/SakuraFlower-setup.exe)** dosyasını indirip çalıştırın (her zaman en son sürüm). Bundan sonraki sürümler uygulamanın içinden gelir: yeni sürüm çıkınca uygulama güncellemeyi ister ve yalnız değişen parçaları indirir.
 
 Güncellemeler ed25519 ile imzalıdır. Uygulama, imzası doğrulanmayan ya da bu depo dışından gelen hiçbir dosyayı kurmaz.
 
