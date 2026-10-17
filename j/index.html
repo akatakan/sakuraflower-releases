@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="referrer" content="no-referrer">
+<title>SakuraFlower grup daveti</title>
+<meta property="og:title" content="SakuraFlower grup daveti">
+<meta property="og:description" content="Gruba katılmak için tıkla. SakuraFlower uygulaması açılır.">
+<style>
+:root{--bg:#120d14;--panel:#1c1520;--line:#33263a;--text:#f5eaf1;--t2:#bfaab8;--pri:#ff6fae;--pri2:#ffb3d4}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+body{display:grid;place-items:center;min-height:100vh;padding:24px 16px;background:radial-gradient(60% 50% at 50% 0%,rgba(255,111,174,.18),transparent 70%),var(--bg)}
+.card{width:100%;max-width:420px;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:28px 24px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.45)}
+.mark{width:44px;height:44px;margin:0 auto 14px;border-radius:12px;background:linear-gradient(135deg,var(--pri),#b84a8a);display:grid;place-items:center;font-weight:700;color:#1a0f16}
+h1{font-size:20px;margin:0 0 6px}
+p{color:var(--t2);margin:0 0 18px}
+.code{display:inline-block;font:600 22px/1 ui-monospace,Consolas,monospace;letter-spacing:.18em;padding:10px 14px;border:1px solid var(--line);border-radius:10px;background:#140f17;color:var(--pri2);margin-bottom:20px}
+.btn{display:block;width:100%;padding:12px 16px;border-radius:10px;font-weight:600;text-decoration:none;border:1px solid transparent;cursor:pointer;font-size:15px}
+.primary{background:var(--pri);color:#1a0f16}
+.secondary{background:transparent;color:var(--text);border-color:var(--line);margin-top:10px}
+.btn:focus-visible{outline:2px solid rgba(255,111,174,.7);outline-offset:2px}
+.small{font-size:13px;color:var(--t2);margin-top:16px}
+.bad h1{color:var(--pri2)}
+</style>
+</head>
+<body>
+<main class="card" id="card">
+  <div class="mark" aria-hidden="true">SF</div>
+  <h1 id="title">SakuraFlower grup daveti</h1>
+  <p id="lead">Seni bir gruba çağırıyorlar.</p>
+  <div class="code" id="code" hidden></div>
+  <a class="btn primary" id="open" href="#" hidden>SakuraFlower'da aç</a>
+  <a class="btn secondary" id="dl" href="https://github.com/akatakan/sakuraflower-releases/releases/latest/download/SakuraFlower-setup.exe" rel="noopener">SakuraFlower'ı indir</a>
+  <div class="small" id="hint" hidden>Uygulama açılmadıysa SakuraFlower'da Grup ekranına bu kodu yaz.</div>
+</main>
+<script>
+(function () {
+  // Must match CODE_ALPHABET / CODE_LENGTH in the app (no 0, 1, I, O)
+  var ALPHABET = /^[ABCDEFGHJKLMNPQRSTUVWXYZ23456789]{6}$/;
+  var raw = (location.hash || '').replace(/^#/, '').trim().toUpperCase();
+  var card = document.getElementById('card');
+  if (!ALPHABET.test(raw)) {
+    card.classList.add('bad');
+    document.getElementById('title').textContent = 'Davet bağlantısı eksik';
+    document.getElementById('lead').textContent = 'Bu bağlantıda geçerli bir grup kodu yok. Daveti gönderen kişiden yeni bir bağlantı iste.';
+    return;
+  }
+  var link = 'sakuraflower://join/' + raw;
+  var code = document.getElementById('code');
+  code.textContent = raw;
+  code.hidden = false;
+  var open = document.getElementById('open');
+  open.href = link;
+  open.hidden = false;
+  document.getElementById('hint').hidden = false;
+  // The app always asks before joining; opening it here only shows that question
+  setTimeout(function () { location.href = link; }, 300);
+})();
+</script>
+</body>
+</html>
